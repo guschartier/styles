@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" class="note" version="1.0" page-range-format="expanded" default-locale="fr-FR">
   <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
-    <info>
-    <title>Séminaire Saint Sulpice Ecole Théologie</title>
+  <info>
+    <title>Séminaire Saint-Sulpice - Ecole Théologie (French)</title>
     <title-short>SSSET</title-short>
     <id>http://www.zotero.org/styles/seminaire-saint-sulpice-ecole-theologie</id>
     <link href="http://www.zotero.org/styles/seminaire-saint-sulpice-ecole-theologie" rel="self"/>
+    <link href="http://www.zotero.org/styles/campus-adventiste-du-saleve-faculte-adventiste-de-theologie" rel="template"/>
+    <link href="http://www.seminairesaintsulpice.fr/" rel="documentation"/>
     <author>
       <name>Augustin CHARTIER</name>
     </author>
-    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
-    <link href="http://www.zotero.org/styles/campus-adventiste-du-saleve-faculte-adventiste-de-theologie" rel="template"/>
     <category citation-format="note"/>
     <category field="theology"/>
     <category field="humanities"/>
-    <updated>2014-05-17T02:49:43+00:00</updated>
+    <updated>2016-06-06T17:50:33+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="fr">
     <terms>
-      <term name="cited"/>
-      <term name="page" form="short">
+        <term name="in">
+            <single>dans</single>
+            <multiple>dans</multiple>
+        </term>
+        <term name="cited">op. cit.</term>
+        <term name="page" form="short">
         <single>p.</single>
-        <multiple>p.</multiple>
+        <multiple>pp.</multiple>
       </term>
       <term name="editor" form="short">
         <single>éd.</single>
-        <multiple>éd.</multiple>
+        <multiple>éds.</multiple>
       </term>
       <term name="online">[en ligne]</term>
     </terms>
@@ -37,7 +42,7 @@
           <name font-style="normal" delimiter-precedes-et-al="always" delimiter-precedes-last="always" et-al-min="3" et-al-use-first="3" et-al-subsequent-min="3" et-al-subsequent-use-first="1" initialize="false" sort-separator=" ">
             <name-part name="family" text-case="sentence" font-variant="small-caps"/>
           </name>
-          <et-al prefix=" " font-style="italic"/>
+          <et-al font-style="italic"/>
         </names>
       </if>
       <else-if variable="editor">
@@ -57,7 +62,7 @@
           <name font-style="normal" delimiter-precedes-et-al="always" delimiter-precedes-last="always" et-al-min="3" et-al-use-first="3" et-al-subsequent-min="1" et-al-subsequent-use-first="1" initialize="false" initialize-with="." name-as-sort-order="all" sort-separator=" ">
             <name-part name="family" text-case="sentence" font-variant="small-caps"/>
           </name>
-          <et-al prefix=" " font-style="italic"/>
+          <et-al font-style="italic"/>
         </names>
       </if>
       <else-if variable="editor">
@@ -214,7 +219,7 @@
           <if is-numeric="edition">
             <group delimiter=" " prefix=", ">
               <number variable="edition" form="ordinal"/>
-              <text term="edition" form="short" suffix="." strip-periods="true"/>
+              <text term="edition" form="short"/>
             </group>
           </if>
           <else>
@@ -281,10 +286,10 @@
       <if type="article-newspaper paper-conference" match="any">
         <choose>
           <if variable="publisher-place">
-            <text variable="publisher-place" prefix=", " suffix=", "/>
+            <text variable="publisher-place" prefix=", "/>
           </if>
           <else>
-            <text value="" prefix=", " suffix=", "/>
+            <text value="" prefix=", "/>
           </else>
         </choose>
       </if>
@@ -302,10 +307,10 @@
       <else-if type="book chapter motion_picture report entry-dictionary entry-encyclopedia map" match="any">
         <choose>
           <if variable="publisher-place">
-            <text variable="publisher-place" prefix=", " suffix=", "/>
+            <text variable="publisher-place" prefix=", "/>
           </if>
           <else>
-            <text value="" prefix=", " suffix=", "/>
+            <text value="" prefix=", "/>
           </else>
         </choose>
       </else-if>
@@ -316,7 +321,7 @@
       <if type="motion_picture map book paper-conference entry-dictionary entry-encyclopedia chapter report" match="any">
         <choose>
           <if variable="publisher">
-            <text variable="publisher"/>
+            <text variable="publisher" prefix=", "/>
           </if>
           <else>
             <text value=""/>
@@ -350,86 +355,10 @@
   <macro name="date">
     <choose>
       <if variable="issued">
-          <date date-parts="year" form="text" variable="issued" prefix=", "/>
+        <date date-parts="year" form="text" variable="issued" prefix=", "/>
       </if>
       <else>
         <text value="" prefix=", "/>
-      </else>
-    </choose>
-  </macro>
-  <macro name="yearpage">
-    <choose>
-      <if type="map book webpage" match="any">
-        <group>
-          <text macro="date"/>
-          <choose>
-            <if variable="locator" match="any">
-              <text variable="locator" prefix=", p.&#160;"/>
-            </if>
-          </choose>
-        </group>
-      </if>
-      <else-if type="manuscript thesis motion_picture broadcast" match="any">
-        <group>
-          <text macro="date"/>
-          <choose>
-            <if variable="locator" match="any">
-              <text variable="locator" prefix="p.&#160;"/>
-            </if>
-          </choose>
-        </group>
-      </else-if>
-      <else-if type="article-newspaper speech paper-conference report entry-dictionary entry-encyclopedia chapter" match="any">
-        <group>
-          <text macro="newspaper-edition"/>
-          <text macro="date"/> 
-          <choose>
-            <if variable="locator" match="any">
-              <group delimiter="&#160;" prefix=", " suffix=".">
-                <label variable="page" form="short"/>
-                <text variable="locator"/>
-              </group>
-            </if>
-            <else-if variable="locator" match="none">
-              <group delimiter="&#160;" prefix=", ">
-                <label variable="page" form="short"/>
-                <text variable="page"/>
-              </group>
-            </else-if>
-          </choose>
-        </group>
-      </else-if>
-      <else-if type="graphic personal_communication interview" match="any"/>
-      <else-if type="article-journal article-magazine" match="any">
-        <group delimiter=" " font-style="normal" prefix=", " suffix=".">
-          <choose>
-            <if variable="locator" match="any">
-              <group delimiter="&#160;">
-                <label variable="page" form="short"/>
-                <text variable="locator"/>
-              </group>
-            </if>
-            <else-if variable="locator" match="none">
-              <group delimiter="&#160;">
-                <label variable="page" form="short"/>
-                <text variable="page"/>
-              </group>
-            </else-if>
-          </choose>
-        </group>
-      </else-if>
-      <else>
-        <group delimiter=", " font-style="normal">
-          <text macro="date"/>
-          <choose>
-            <if variable="locator" match="any">
-              <text variable="locator" prefix="p.&#160;"/>
-            </if>
-            <else-if variable="locator" match="none">
-              <text variable="number-of-pages" suffix="&#160;p"/>
-            </else-if>
-          </choose>
-        </group>
       </else>
     </choose>
   </macro>
@@ -437,7 +366,7 @@
     <choose>
       <if type="book" match="any">
         <group>
-          <text macro="date"/> 
+          <text macro="date"/>
         </group>
       </if>
       <else-if type="map manuscript thesis motion_picture broadcast" match="any">
@@ -475,14 +404,14 @@
         </group>
       </else-if>
       <else-if type="webpage" match="any">
-    <group delimiter=" " font-style="normal">
-      <text value="le" prefix=", "/>
-      <date form="text" variable="issued" suffix="">
-        <date-part name="day"/>
-        <date-part name="month"/>
-        <date-part name="year"/>
-      </date>
-    </group>    
+        <group delimiter=" " font-style="normal">
+          <text value="le" prefix=", "/>
+          <date form="text" variable="issued" suffix="">
+            <date-part name="day"/>
+            <date-part name="month"/>
+            <date-part name="year"/>
+          </date>
+        </group>
       </else-if>
       <else>
         <group>
@@ -575,13 +504,17 @@
       </if>
     </choose>
   </macro>
+  <macro name="pages-citation">
+      <label plural="never" suffix=" " variable="page" form="short"/>
+      <text variable="locator" form="short"/>
+  </macro>
   <citation et-al-min="3" et-al-use-first="3" et-al-subsequent-min="3" et-al-subsequent-use-first="1">
     <layout suffix="." delimiter="&#160;; ">
       <choose>
         <if position="ibid-with-locator">
           <group delimiter=", ">
             <text term="ibid" text-case="capitalize-first" font-style="italic" suffix="."/>
-            <text variable="locator" prefix="p. "/>
+            <text macro="pages-citation"/>
           </group>
         </if>
         <else-if position="ibid">
@@ -600,8 +533,7 @@
             </choose>
             <text term="cited" font-style="italic" suffix="."/>
             <group delimiter="&#160;">
-              <label plural="never" variable="page" form="short"/>
-              <text variable="locator"/>
+              <text macro="pages-citation"/>
             </group>
           </group>
         </else-if>
@@ -613,10 +545,11 @@
           <text macro="volume"/>
           <text macro="edition"/>
           <text macro="event"/>
-          <text macro="place"/>
           <text macro="publisher"/>
+          <text macro="place"/>
           <text macro="yearpage-bib"/>
           <text macro="accessed"/>
+          <text macro="pages-citation" prefix=", "/>
         </else>
       </choose>
     </layout>
@@ -634,8 +567,8 @@
       <text macro="volume"/>
       <text macro="edition"/>
       <text macro="event"/>
-      <text macro="place"/>
       <text macro="publisher"/>
+      <text macro="place"/>
       <text macro="yearpage-bib"/>
       <text macro="archive"/>
       <text macro="accessed"/>
